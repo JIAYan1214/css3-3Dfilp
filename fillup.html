@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3正反面3D翻转</title>
+    <style>
+        .container {
+            perspective: 200;/*当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。*/
+        }
+        .container:hover .side{
+            transform: rotateY(180deg);
+        }
+        .container, .front, .back {
+            width: 355px;
+            height: 500px;
+        }
+        .side {
+            transition: 0.6s;
+            transform-style: preserve-3d;  /*让其子元素有3D翻转的效果。*/
+            position: relative;
+        }
+        .front, .back {
+            backface-visibility: hidden; /*将反转了180度的隐藏*/
+            -ms-backface-visibility: hidden;
+            position: absolute;
+        }
+        .front {
+            background:url(img/puke-k.png);
+        }
+        .back {
+            transform: rotateY(180deg);
+            background:url(img/puke-back.png);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="side">
+            <div class="front">
+                <!-- 正面 -->
+            </div>
+            <div class="back">
+                <!-- 反面 -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
